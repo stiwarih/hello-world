@@ -38,3 +38,27 @@ def split_fileB(line):
    count = int(count)
    word, date = word_date.split(' ')
    return (word, date + " " + count) 
+
+def split_fileB(line):
+    # split the input line into word, date and count_string
+    
+    word_date, count = line.split(',')
+
+    # turn the count to an integer  
+    #count = int(count)
+    word, date = word_date.split(' ')
+    print word, date, count
+    return (word, date + " " + count)
+
+fileB_data = fileB.map(split_fileB)
+
+fileB_data.collect() 
+
+#[(u'able', u'Jan-01 5'),
+ (u'about', u'Feb-02 3'),
+ (u'about', u'Mar-03 8 '),
+ (u'able', u'Apr-04 13'),
+ (u'actor', u'Feb-22 3'),
+ (u'burger', u'Feb-23 5'),
+ (u'burger', u'Mar-08 2'),
+ (u'able', u'Dec-15 100')]
